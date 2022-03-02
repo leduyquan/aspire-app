@@ -1,0 +1,23 @@
+$font-family-sans-serif: 'Poppins', sans-serif;
+$font-size-base: 62.5%;
+$text-color-base: #333;
+$border-color-base: #333;
+$bg-color-base: #333;
+$bg-scrollbar-track: #FAFAFA;
+$bg-scrollbar-thumb: #C1C1C1;
+
+$green-color: #01D167;
+$green-weak-color: #EDFFF5;
+$blue-dark-color: #0C365A;
+$blue-color: #325BAF;
+$white-color: #FFFFFF;
+
+$from-sm-screen:"only screen and (min-width : 576px)"; // use by @media #{$from-sm-screen}{}
+$from-md-screen:"only screen and (min-width : 769px)";
+$from-lg-screen:"only screen and (min-width : 992px)";
+$from-xl-screen:"only screen and (min-width : 1200px)";
+$to-sm-screen:"only screen and (max-width : 576px)";
+$to-md-screen:"only screen and (max-width : 768px)";
+$to-lg-screen:"only screen and (max-width : 992px)";
+$to-xl-screen:"only screen and (max-width : 1200px)";
+$to-xxl-screen:"only screen and (max-width : 1360px)";
