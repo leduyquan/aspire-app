@@ -1,0 +1,54 @@
+.sidebar {
+  height: 100%;
+  background-color: $bg-color-base;
+  &__info {
+    padding: 48px;
+    .logo {
+      min-width: 125px;
+      height: auto;
+      fill: $green-color;
+    }
+    .description {
+      margin-top: 19px;
+      display: block;
+      opacity: 0.3;
+      font-size: 1.5rem;
+      color: $white-color;
+      line-height: 1.35;
+    }
+  }
+
+  &__tabs {
+    padding-left: 0;
+    .sidebar-item {
+      display: flex;
+      font-size: 1.6rem;
+      gap: 16px;
+      color: $white-color;
+      font-weight: 400;
+      padding: 32px 48px;
+      cursor: pointer;
+      &__logo {
+        fill: $white-color;
+      }
+      &__logo:hover {
+        fill: $green-color;
+      }
+    }
+    .sidebar-item.router-link-exact-active {
+      font-weight: 600;
+      color: $green-color;
+      .sidebar-item__logo {
+        fill: $green-color;
+      }
+    }
+    .sidebar-item:hover {
+      background-color: #092b49;
+      font-weight: 600;
+      color: $green-color;
+      .sidebar-item__logo {
+        fill: $green-color;
+      }
+    }
+  }
+}

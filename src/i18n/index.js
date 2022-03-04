@@ -3,7 +3,7 @@ import VueI18n from 'vue-i18n';
 import en from './en.json';
 Vue.use(VueI18n);
 
-export const i18n = new VueI18n({
+const i18n = new VueI18n({
   locale: 'en-US',
   fallbackLocale: 'en',
   silentTranslationWarn: true,
@@ -11,3 +11,5 @@ export const i18n = new VueI18n({
     en
   },
 });
+
+export default i18n;

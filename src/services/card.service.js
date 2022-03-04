@@ -1,7 +1,7 @@
 import api from "./api";
-class ProductDataService {
-  getAll() {
-    return api.get("/products/es-search/*/");
+class CardService {
+  getCardAll() {
+    return api.get("/cards/");
   }
 
   get(id) {
@@ -25,4 +25,4 @@ class ProductDataService {
   }
 }
 
-export default new ProductDataService();
+export default new CardService();

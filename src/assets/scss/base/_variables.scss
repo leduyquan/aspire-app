@@ -1,16 +1,17 @@
-$font-family-sans-serif: 'Poppins', sans-serif;
+$font-family-sans-serif: 'Open Sans', sans-serif;
 $font-size-base: 62.5%;
-$text-color-base: #333;
-$border-color-base: #333;
-$bg-color-base: #333;
-$bg-scrollbar-track: #FAFAFA;
-$bg-scrollbar-thumb: #C1C1C1;
+$bg-color-base: #0c365a;
+$bg-color-widget: #EDF3FF;
 
-$green-color: #01D167;
+$text-color-base: #333;
+
 $green-weak-color: #EDFFF5;
-$blue-dark-color: #0C365A;
+
 $blue-color: #325BAF;
+$blue-color-dark: #0C365A;
 $white-color: #FFFFFF;
+$green-color: #01D167;
+$black-color: #222222;
 
 $from-sm-screen:"only screen and (min-width : 576px)"; // use by @media #{$from-sm-screen}{}
 $from-md-screen:"only screen and (min-width : 769px)";

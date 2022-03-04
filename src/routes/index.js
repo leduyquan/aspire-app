@@ -1,42 +1,29 @@
-// import { createRouter, createWebHashHistory } from 'vue-router'
-// import Home from '../views/Home.vue'
-// import ScheduleTable from '../views/ScheduleTable.vue'
-// import DoSchedule from '../views/DoSchedule.vue'
-// import Date from '../views/Date.vue'
-// import Todo from '../views/Todo.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Card from '../views/desktop/Card.vue'
+Vue.use(VueRouter);
 
-// const routes = [
-//   {
-//     path: '/',
-//     name: 'Home',
-//     component: Home
-//   },
-//   {
-//     path: '/ScheduleTable',
-//     name: 'ScheduleTable',
-//     component: ScheduleTable
-//   },
-//   {
-//     path: '/DoSchedule',
-//     name: 'DoSchedule',
-//     component: DoSchedule
-//   },
-//   {
-//     path: '/Date/:date',
-//     name: 'Date',
-//     component: Date
-//   },
-//   {
-//     path: '/Todo/:index',
-//     name: 'Todo',
-//     component: Todo
-//   }
+const routes = [
+  {
+    path: '/',
+    redirect: '/cards',
+  },
+  {
+    path: '/cards',
+    name: 'Cards',
+    component: Card
+  },
+  // {
+  //   path: '/Todo/:index',
+  //   name: 'Todo',
+  //   component: Todo
+  // }
 
-// ]
+]
 
-// const router = createRouter({
-//   history: createWebHashHistory(),
-//   routes
-// })
+const router = new VueRouter({
+  routes,
+  mode: 'history',
+});
 
-// export default router
+export default router;

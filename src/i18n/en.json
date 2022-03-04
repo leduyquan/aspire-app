@@ -1,6 +1,35 @@
 {
-  "application": {
-    "action": "Action"
+  "app": {
+    "submit": "Submit",
+    "notification": "Notification"
+  },
+  "info": {
+    "description": "Trusted way of banking for 3,000+ SMEs and startups in Singapore"
+  },
+  "tabs": {
+    "home": "Home",
+    "cards": "Cards",
+    "payments": "Payments",
+    "credit": "Credit",
+    "settings": "Settings"
+  },
+  "card": {
+    "available_balance": "Available balance",
+    "show_card_number": "Show card number",
+    "my_debit_cards": "My debit cards",
+    "all_company_cards": "All company cards",
+    "new_card": "New card",
+    "set_spend_limit": "Set spend limit",
+    "add_to_gpay": "Add to QPay",
+    "replace_card": "Replace card",
+    "cancel_card": "Cancel card",
+    "freeze_card": "Freeze card",
+    "card_details": "Card details",
+    "recent_transactions": "Recent transactions",
+    "charged_debit_card": "Charged to debit card",
+    "view_all_card": "View all card transactions",
+    "refund_debit_card": "Refund on debit card",
+    "add_new": "Add new card"
   },
   "messages": {
     "update_payment_success": "Update payment successfully.",

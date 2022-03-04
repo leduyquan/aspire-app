@@ -1,23 +1,23 @@
 import Vue from 'vue';
-window.AssetUrl = '/';
-window.userTimezone  = 'Asia/Singapore';
-window.localeCode = 'zh';
+const moment = require('moment-timezone');
+const userTimezone  = 'Asia/Singapore';
 Vue.mixin({
-    i18n,
     methods: {
-        assetUrl: function(link) {
-            link = (link || '').replace(/^\//, '');
-            return window.AssetUrl + 'assets/' + link;
+        iconPath(name) {
+            return require(`@/assets/img/${name}`).default;
         },
-        baseUrl: function(link) {
-            link = (link || '').replace(/^\//, '');
-            return window.AssetUrl + link;
+        notification(type, message) {
+            this.$notification[type]({ message:this.$t('app.notification'), description: message, });
         },
-        localTimeConversion: function(utcTime, timezone = userTimezone, format = `${moment.HTML5_FMT.DATE} ${moment.HTML5_FMT.TIME_SECONDS}`) {
+        localTimeConversion: function(utcTime, format = `${moment.HTML5_FMT.DATE} ${moment.HTML5_FMT.TIME_SECONDS}`,  timezone = userTimezone, ) {
             return moment.utc(utcTime).tz(timezone).format(format);
         },
-        utcTimeConvertion: function(localTime, timezone = userTimezone, format = `${moment.HTML5_FMT.DATE} ${moment.HTML5_FMT.TIME_SECONDS}`) {
+        utcTimeConversion: function(localTime, format = `${moment.HTML5_FMT.DATE} ${moment.HTML5_FMT.TIME_SECONDS}`, timezone = userTimezone,) {
             return moment.tz(moment(localTime).format(moment.HTML5_FMT.DATETIME_LOCAL_SECONDS), timezone).utc().format(format);
+        },
+        formatDateTime(dateTime, format) {
+            if (!dateTime) return ''
+            return this.localTimeConversion(dateTime,format,userTimezone)
         },
     },
 });
