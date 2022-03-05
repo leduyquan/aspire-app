@@ -70,17 +70,25 @@
           padding: 40px;
           .debit-card {
             &__info {
-              .show-card {
-                display: inline-flex;
-                align-items: center;
-                color: $green-color;
-                font-size: 1.2rem;
-                font-weight: 600;
+              .show-card-wrapper {
+                display: flex;
                 justify-content: flex-end;
-                width: 100%;
-                margin-bottom: 8px;
+                margin-bottom: 10px;
+                .show-card {
+                  display: contents;
+                  color: $green-color;
+                  font-size: 1.2rem;
+                  font-weight: 600;
+                  cursor: pointer;
+                  width: 100%;
+                  &__label {
+                    margin-left: 5px;
+                  }
+                }
               }
               .card-list {
+                padding-bottom: 40px;
+                margin-bottom: 16px;
               }
               .card-action {
                 cursor: pointer;
@@ -157,6 +165,15 @@
                 margin-top: 24px;
               }
             }
+            .ant-row {
+              margin-left: -23px !important;
+              margin-right: -23px !important;
+              .ant-col {
+                padding-left: 23px !important;
+                padding-right: 23px !important;
+              }
+
+            }
           }
         }
       }
@@ -171,6 +188,9 @@
     border-radius: 10px;
     padding: 27px;
     width: 100%;
+    &--inactive {
+      opacity: 0.6;
+    }
     &__logo {
       display: flex;
       margin-left: auto;
@@ -200,7 +220,7 @@
           background-color: $white-color;
         }
       }
-      .card-item-year {
+      .card-item-show {
         font-weight: 600;
         font-size: 1.4rem;
         letter-spacing: 3px;
@@ -220,6 +240,7 @@
         }
         &__code {
           letter-spacing: 1.5px;
+          margin-left: 5px;
         }
       }
       .card-cvv {
@@ -249,7 +270,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-top: 30px;
     .card-action {
       width: 60px;
       text-align: center;
@@ -260,6 +280,11 @@
         font-size: 1.3rem;
         font-weight: 400;
         color: $blue-color-dark;
+      }
+    }
+    .card-action:hover {
+      .card-action__icon {
+        opacity: 0.9;
       }
     }
   }

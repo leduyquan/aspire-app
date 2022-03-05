@@ -41,5 +41,7 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap');
 @import "@/assets/scss/styles.scss";
-// @import url('./assets/scss/styles.scss');
+#components-layout {
+  height: 100%;
+}
 </style>

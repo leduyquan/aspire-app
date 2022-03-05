@@ -1,7 +1,9 @@
 {
   "app": {
     "submit": "Submit",
-    "notification": "Notification"
+    "notification": "Notification",
+    "yes": "Yes",
+    "no": "No"
   },
   "info": {
     "description": "Trusted way of banking for 3,000+ SMEs and startups in Singapore"
@@ -14,6 +16,7 @@
     "settings": "Settings"
   },
   "card": {
+    "cvv": "CVV",
     "available_balance": "Available balance",
     "show_card_number": "Show card number",
     "my_debit_cards": "My debit cards",
@@ -24,40 +27,28 @@
     "replace_card": "Replace card",
     "cancel_card": "Cancel card",
     "freeze_card": "Freeze card",
+    "unfreeze_card": "Unfreeze card",
     "card_details": "Card details",
     "recent_transactions": "Recent transactions",
     "charged_debit_card": "Charged to debit card",
     "view_all_card": "View all card transactions",
     "refund_debit_card": "Refund on debit card",
-    "add_new": "Add new card"
+    "first_name": "First name",
+    "last_name": "Last name",
+    "sure_freeze_card": "Are you sure freeze this card?",
+    "sure_unfreeze_card": "Are you sure unfreeze this card?",
+    "sure_delete_card": "Are you sure delete this card?"
+
   },
   "messages": {
-    "update_payment_success": "Update payment successfully.",
-    "update_payment_failed": "Update payment failed.",
-    "update_document_success": "Upload document successfully.",
-    "update_document_failed": "Update document failed.",
-    "update_invoice_success": "Update invoice successfully.",
-    "create_invoice_success": "Create invoice successfully.",
-    "update_invoice_failed": "Update invoice failed.",
-    "create_invoice_failed": "Create invoice failed.",
-    "delete_invoice_success": "Delete invoice successfully.",
-    "delete_invoice_failed": "Delete invoice failed.",
-    "update_status_success": "Update status successfully.",
-    "update_status_failed": "Update status failed.",
-    "create_app_success": "Create application successfully.",
-    "create_app_failed": "Create application failed.",
-    "update_info_success": "Update information successfully.",
-    "update_info_failed": "Update information failed.",
-    "update_password_success": "Update password successfully.",
-    "update_password_failed": "Update password failed.",
-    "create_client_success": "Create client successfully.",
-    "create_client_success_iframe": "Your account / application information have been registered successfully. Please awaiting for approval from InkasoAljansas's Employees so you can login to the system.",
-    "register_reload": "Please click here if you would like to create a new account / application."
+    "create_card_success": "Create card successfully.",
+    "create_card_failed": "Create card failed.",
+    "update_card_success": "Update card successfully.",
+    "update_card_failed": "Update card failed.",
+    "delete_card_success": "Delete card successfully.",
+    "delete_card_failed": "Delete card failed."
   },
   "validate": {
-    "this_field_required": "This field is required",
-    "email_error": "The {name} field must be a valid email",
-    "alphabetic_error": "The {name} field may only contain alphabetic characters as well as spaces",
-    "does_not_match": "The {name} does not match"
+    "this_field_required": "This field is required"
   }
 }

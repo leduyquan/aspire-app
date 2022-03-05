@@ -1,20 +1,20 @@
 <template>
-  <div class="card-item">
+  <div class="card-item" :class="{'card-item--inactive': !status}">
     <img class="card-item__logo svg-render" :src="iconPath(`logos/aspire.svg`)" />
-    <div class="card-item__name">{{ name }}</div>
+    <div class="card-item__name">{{ fullName }}</div>
     <div class="card-item__number">
-      <CardItemNumber/>
-      <CardItemNumber/>
-      <CardItemNumber/>
-      <span class="card-item-year">2020</span>
+      <CardItemNumber :number="firstCardNumber" :is-show="isShowNumber"/>
+      <CardItemNumber :number="secondCardNumber" :is-show="isShowNumber"/>
+      <CardItemNumber :number="thirdCardNumber" :is-show="isShowNumber"/>
+      <CardItemNumber :number="lastCardNumber" :is-show="true"/>
     </div>
     <div class="card-item__date-cvv">
       <div class="card-date">
-        <div class="card-date__label">Thru:</div>
-        <div class="card-date__code">12/20</div>
+        <div class="card-date__label">{{ dayCard }}</div>:
+        <div class="card-date__code">{{ monthCard }}</div>
       </div>
       <div class="card-cvv">
-        <div class="card-cvv__label">CVV:</div>
+        <div class="card-cvv__label">{{ $t('card.cvv') }}:</div>
         <div class="card-cvv__code">***</div>
       </div>
     </div>
@@ -30,14 +30,53 @@ export default {
     CardItemNumber
   },
   props: {
-    name: {
+    firstName: {
       type: String,
-      // required: true
+      required: true
+    },
+    lastName: {
+      type: String,
+      required: true
     },
     cardNumber: {
       type: String,
-      default: ''
+      required: true
+    },
+    dateTime: {
+      type: String,
+      required: true
+    },
+    status: {
+      type: Boolean,
+      required: true
+    },
+    isShowNumber: {
+      type: Boolean,
+      default: false
     }
+  },
+  computed: {
+    fullName() {
+      return this.firstName + ' ' + this.lastName;
+    },
+    dayCard() {
+      return this.formatDateTime(this.dateTime, 'ddd');
+    },
+    monthCard() {
+      return this.formatDateTime(this.dateTime, 'MM/YY');
+    },
+    firstCardNumber() {
+      return this.cardNumber.slice(0, 4);
+    },
+    secondCardNumber() {
+      return this.cardNumber.slice(4, 8);
+    },
+    thirdCardNumber() {
+      return this.cardNumber.slice(8, 12);
+    },
+    lastCardNumber() {
+      return this.cardNumber.slice(this.cardNumber.length - 4);
+    },
   },
   mounted() {
     document.querySelectorAll('img.svg-render').forEach(function(img){

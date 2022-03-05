@@ -2,6 +2,10 @@
   padding: 60px;
 }
 
+.ant-layout {
+  height: 100%;
+}
+
 .app-btn {
   display: flex;
   justify-content: center; 
@@ -23,6 +27,9 @@
 }
 .app-btn .full{
 
+}
+.btn-opacity:hover{
+  opacity: .9;
 }
 
 .modal-form {
@@ -99,5 +106,64 @@
     color: #fff;
     background-color: $blue-color;
     border-color: $blue-color;
+  }
+}
+
+.card-carousel {
+  .custom-dot-class {
+    bottom: -24px;
+    li {
+      width: 8px;
+      height: 8px;
+      margin: 0 4px;
+      button {
+        width: 8px;
+        height: 8px;
+        padding: 0;
+      }
+      button::before {
+        content: "";
+        background-color: $green-color;
+        border-radius: 100%;
+        opacity: 0.2;
+        width: 8px;
+        height: 8px;
+      }
+    }
+    li.slick-active {
+      width: 16px;
+      button::before {
+        background-color: $green-color;
+        border-radius: 20px;
+
+        opacity: 1;
+        width: 16px;
+
+      }
+    }
+  }
+  .VueCarousel-wrapper {
+    .VueCarousel-slide > div {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  .VueCarousel-pagination {
+    .VueCarousel-dot-container {
+      margin-top: 0;
+      .VueCarousel-dot {
+        margin-top: 0 !important;
+        background-color: $green-color !important;
+        opacity: .2;
+      }
+      .VueCarousel-dot.VueCarousel-dot--active {
+        width: 16px !important;
+        border-radius: 20px;
+        opacity: 1;
+      }
+      .VueCarousel-dot:focus {
+        outline: none;
+      }
+    }
   }
 }

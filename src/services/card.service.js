@@ -4,24 +4,16 @@ class CardService {
     return api.get("/cards/");
   }
 
-  get(id) {
-    return api.get(`/products/id-es-search/${id}/`);
+  createCard(data) {
+    return api.post("/cards/", data);
   }
 
-  create(data) {
-    return api.post("/products/api/", data);
+  updateCard(id, data) {
+    return api.put(`/cards/${id}`, data);
   }
 
-  update(id, data) {
-    return api.put(`/products/api/${id}/`, data);
-  }
-
-  delete(id) {
-    return api.delete(`/products/api/${id}/`);
-  }
-
-  findByTitle(title) {
-    return api.get(`/products/es-search/${title}/`);
+  deleteCard(id) {
+    return api.delete(`/cards/${id}`);
   }
 }
 

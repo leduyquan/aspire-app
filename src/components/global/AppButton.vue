@@ -1,5 +1,5 @@
 <template>
-  <button class="app-btn" :class="size" type="primary" :disabled="disabled" @click="onClick">
+  <button class="app-btn btn-opacity" :class="size" type="primary" :disabled="disabled" @click="onClick">
     <slot></slot>
     <span class="app-btn__label">{{ label }}</span>
   </button>

@@ -3,6 +3,7 @@
   background-color: $bg-color-base;
   &__info {
     padding: 48px;
+    animation: displayFade ease 3s;
     .logo {
       min-width: 125px;
       height: auto;
@@ -16,10 +17,14 @@
       color: $white-color;
       line-height: 1.35;
     }
+    &--hidden {
+      display: none;
+    }
   }
 
   &__tabs {
     padding-left: 0;
+    animation: displayFade ease-in 2s;
     .sidebar-item {
       display: flex;
       font-size: 1.6rem;
@@ -36,7 +41,7 @@
       }
     }
     .sidebar-item.router-link-exact-active {
-      font-weight: 600;
+      font-weight: 600 !important;
       color: $green-color;
       .sidebar-item__logo {
         fill: $green-color;
@@ -44,11 +49,46 @@
     }
     .sidebar-item:hover {
       background-color: #092b49;
-      font-weight: 600;
+      font-weight: 400;
       color: $green-color;
       .sidebar-item__logo {
         fill: $green-color;
       }
     }
+  }
+}
+@keyframes displayFade {
+  from {
+    display: none;
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    display: block;
+  }
+}
+@media #{$to-lg-screen} {
+  .sidebar {
+    &__info {
+      display: none;
+      &--hidden {
+        display: block;
+        padding: 30px 10px 10px 10px;
+        animation: displayFade ease-in 3s;
+        .logo {
+          width: 100%;
+          height: auto;
+          fill: $green-color;
+        }
+      }
+    }
+    &__tabs {
+      .sidebar-item {
+        padding: 32px;
+      }
+    }
+  }
+  .sidebar-item__title--hidden {
+    display: none;
   }
 }

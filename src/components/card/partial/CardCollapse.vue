@@ -3,7 +3,7 @@
     <template #expandIcon="props">
       <img class="collapse-arrow" :src="iconPath('icons/global/down-arrow.svg')" :style="`transform: rotate(${props.isActive ? 180 : 0}deg)`" />
     </template>
-    <a-collapse-panel :header="headerLabel" >
+    <a-collapse-panel :key="isOpen ? 'open' : ''" :header="headerLabel" >
       <slot></slot>
       <template v-if="actionLabel">
         <div class="collapse-action">
@@ -33,10 +33,14 @@
         type: String,
         default: ''
       },
+      isOpen: {
+        type: Boolean,
+        default: false
+      }
     },
     data() {
       return {
-        activeKey: ''
+        activeKey: 'open'
       }
     },
     methods: {
