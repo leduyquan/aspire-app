@@ -102,9 +102,9 @@ export default {
         isShowNumber: false
       }));
     },
-    async getTransactionRecent() {
+    getTransactionRecent() {
       try {
-        const response = await TransactionService.getTransactionRecent();
+        const response = TransactionService.getTransactionRecent();
         const { data } = response;
         this.recentTransactions = data.data;
         this.balance = data.balance;
