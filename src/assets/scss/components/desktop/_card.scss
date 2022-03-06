@@ -1,0 +1,320 @@
+.desktop {
+  .card-page {
+    &__header {
+      margin-bottom: 34px;
+      .card-title {
+        color: $black-color;
+        font-size: 1.4rem;
+        margin-bottom: 3px;
+      }
+      .card-figures {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        .card-balance {
+          display: flex;
+          &__icon {
+            width: 40px;
+            height: 24px;
+            border-radius: 4px;
+            text-align: center;
+            color: $white-color;
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-weight: 600;
+            &--active {
+              background-color: $green-color;
+            }
+  
+          }
+          &__number {
+            margin-left: 12px;
+            font-size: 2.6rem;
+            font-weight: 600;
+            line-height: 23px;
+          }
+        }
+        .card-logo {
+          fill: $white-color;
+        }
+      }
+    }
+  
+    &__content {
+      .ant-tabs {
+        overflow: visible;
+        .ant-tabs-bar {
+          border-bottom: none;
+          .ant-tabs-nav-container {
+            .ant-tabs-nav-wrap {
+              .ant-tabs-nav {
+                .ant-tabs-tab {
+                  font-size: 1.4rem;
+                  color: $black-color;
+                  opacity: 0.3;
+                  margin: 0 28px 0 0;
+                  padding: 0;
+                  padding-bottom: 5px;
+                }
+                .ant-tabs-tab-active {
+                  font-weight: 600;
+                  opacity: 1;
+                }
+                .ant-tabs-ink-bar {
+                  background-color: #23CEFD;
+                }
+              }
+            }
+          }
+        }
+        .ant-tabs-content {
+          .ant-tabs-tabpane {
+            border-radius: 8px;
+            box-shadow: 0px 2px 12px #00000014;
+            padding: 40px;
+            .debit-card {
+              &__info {
+                .show-card-wrapper {
+                  display: flex;
+                  justify-content: flex-end;
+                  margin-bottom: 10px;
+                  .show-card {
+                    display: contents;
+                    color: $green-color;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    cursor: pointer;
+                    width: 100%;
+                    &__label {
+                      margin-left: 5px;
+                    }
+                  }
+                }
+                .card-list {
+                  padding-bottom: 40px;
+                  margin-bottom: 16px;
+                  .card-carousel {
+                    .slick-list {
+                      margin: 0 -12px;
+                    }
+                    .slick-slide {
+                      padding: 0 12px;
+                    }
+                  }
+                }
+                .card-action {
+                  cursor: pointer;
+                }
+              }
+              &__history {
+                margin-top: 25px;
+              }
+              .ant-row {
+                margin-left: -23px !important;
+                margin-right: -23px !important;
+                .ant-col {
+                  padding-left: 23px !important;
+                  padding-right: 23px !important;
+                }
+  
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .card-item {
+      position: relative;
+      width: 414px;
+      height: 248px;
+      background-color: $green-color;
+      border-radius: 10px;
+      padding: 27px;
+      width: 100%;
+      &--inactive {
+        opacity: 0.6;
+      }
+      &__logo {
+        display: flex;
+        margin-left: auto;
+        max-width: 84px;
+        height: auto;
+        fill: $white-color;
+      }
+      &__name {
+        font-size: 2.4rem;
+        font-weight: 600;
+        line-height: 24px;
+        color: $white-color;
+        padding: 27px 0;
+      }
+      &__number {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        margin-bottom: 15px;
+        .card-item-dot {
+          display: flex;
+          gap: 7px;
+          .dot {
+            border-radius: 50%;
+            width: 9px;
+            height: 9px;
+            background-color: $white-color;
+          }
+        }
+        .card-item-show {
+          font-weight: 600;
+          font-size: 1.4rem;
+          letter-spacing: 3px;
+          color: $white-color;
+        }
+      }
+      &__date-cvv {
+        display: flex;
+        align-items: center;
+        font-size: 1.3rem;
+        color: $white-color;
+        font-weight: 600;
+        .card-date {
+          display: flex;
+          margin-right: 46px;
+          &__label {
+          }
+          &__code {
+            letter-spacing: 1.5px;
+            margin-left: 5px;
+          }
+        }
+        .card-cvv {
+          display: flex;
+          height: 20px;
+          &__label {
+            margin-right: 5px;
+          }
+          &__code {
+            font-size: 2.4rem;
+            line-height: 26px;
+          }
+        }
+  
+      }
+      &__visa {
+        position: absolute;
+        bottom: 27px;
+        right: 27px;
+      }
+    }
+    .card-action-wrapper {
+      background-color: $bg-color-widget;
+      border-radius: 16px;
+      padding: 20px 30px;
+      box-shadow: 0px 0px 4px #dee7fa;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      .card-action {
+        width: 60px;
+        text-align: center;
+        &__icon {
+          margin-bottom: 7px;
+        }
+        &__label {
+          font-size: 1.3rem;
+          font-weight: 400;
+          color: $blue-color-dark;
+        }
+      }
+      .card-action:hover {
+        .card-action__icon {
+          opacity: 0.9;
+        }
+      }
+    }
+    .transaction {
+      display: flex;
+      position: relative;
+      padding: 16px 0;
+      border-bottom: 1px solid #F5F5F5;
+      &__icon-wrapper {
+        height: 48px;
+        width: 48px;
+        border-radius: 50%;
+        display: flex;
+        margin-right: 12px;
+        .icon {
+          margin: auto;
+        }
+      }
+      &__icon-wrapper.blue {
+        background-color: #009DFF1A;
+      }
+      &__icon-wrapper.green {
+        background-color: #00D6B51A;
+      }
+      &__icon-wrapper.red {
+        background-color: #F251951A;
+      }
+      &__content {
+        flex: 1;
+        .transaction-info-wrapper {
+          margin-bottom: 12px;
+          .transaction-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+            &__name {
+              font-weight: 600;
+            }
+            &__balance {
+              display: flex;
+              font-weight: 600;
+              gap: 5px;
+            }
+            &__balance--status {
+              color: $green-color;
+            }
+  
+          }
+          .transaction-date {
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: #AAAAAA;
+          }
+        }
+        .transaction-refund {
+          display: flex;
+          align-items: center;
+          &__icon-wrapper {
+            background-color: $blue-color;
+            width: 24px;
+            height: 20px;
+            display: flex;
+            border-radius: 45%;
+            margin-right: 9px;
+            .icon {
+              margin: auto;
+            }
+          }
+          &__label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: $blue-color;
+            
+          }
+        }
+      }
+      &__collapse {
+        position: relative;
+        right: -8px;
+        top: 5px;
+        height: 100%;
+      }
+    }
+    .transaction:last-child {
+      border-bottom: none;
+    }
+  }
+}
