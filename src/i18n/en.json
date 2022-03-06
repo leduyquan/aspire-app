@@ -13,10 +13,12 @@
     "cards": "Cards",
     "payments": "Payments",
     "credit": "Credit",
-    "settings": "Settings"
+    "settings": "Settings",
+    "profiles": "Profiles"
   },
   "card": {
     "cvv": "CVV",
+    "account_balance": "Account balance",
     "available_balance": "Available balance",
     "show_card_number": "Show card number",
     "my_debit_cards": "My debit cards",

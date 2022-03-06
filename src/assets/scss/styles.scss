@@ -1,6 +1,8 @@
 @import 'base/variables';
 @import 'base/normalize';
 @import 'base/flexbox';
-@import 'components/sidebar';
-@import 'components/content';
-@import 'components/card';
+@import 'components/customize';
+@import 'components/desktop/sidebar';
+@import 'components/desktop/card';
+@import 'components/mobile/footer';
+@import 'components/mobile/card';

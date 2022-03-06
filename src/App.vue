@@ -1,14 +1,14 @@
 <template>
-    <app-desktop></app-desktop>
+  <ViewApplication></ViewApplication>
 </template>
 
 <script>
-import AppDesktop from '@/views/desktop/index.vue'
+import ViewApplication from '@/views/index.vue'
 
 export default {
   name: 'App',
   components: {
-    AppDesktop
+    ViewApplication
   },
   mounted() {
     document.querySelectorAll('img.svg-render').forEach(function(img){

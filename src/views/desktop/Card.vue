@@ -8,7 +8,7 @@
           <div class="card-balance__number">{{ balanceFormat }}</div>
         </div>
         <app-button :label="$t('card.new_card')" @click="openAddCardModal">
-           <img class="sidebar-item__logo" :src="iconPath(`icons/global/plus.svg`)" />
+           <img class="card-logo svg-render" :src="iconPath(`icons/global/plus.svg`)" />
         </app-button>
       </div>
     </div>
@@ -52,11 +52,12 @@
   </div>
 </template>
 <script>
-import CardDebit from '@/components/card/CardDebit.vue';
-import CardCompany from '@/components/card/CardCompany.vue';
+import CardDebit from '@/components/desktop/card/CardDebit.vue';
+import CardCompany from '@/components/desktop/card/CardCompany.vue';
 import CardService from '../../services/card.service'
 import TransactionService from '../../services/transaction.service'
 import moment from 'moment'
+import { mapState, mapActions } from 'vuex'
 import { ValidationObserver } from 'vee-validate';
 
 export default {
@@ -67,7 +68,6 @@ export default {
   },
   data() {
     return {
-      cards: [],
       recentTransactions: [],
       balance: 0,
       form: {
@@ -81,24 +81,17 @@ export default {
     };
   },
   computed: {
+    ...mapState('card', ['cards']),
     balanceFormat() {
       return this._numberWithCommas(this.balance)
     }
   },
   mounted() {
-    this.getCards();
+    this.getCardAll();
     this.getRecentTransactions();
   },
   methods: {
-    async getCards() {
-      try {
-        const response = await CardService.getCardAll();
-        const { data } = response;
-        this.cards = data;
-      } catch (error) {
-        console.log(error)
-      }
-    },
+    ...mapActions('card', ['getCardAll']),
     async getRecentTransactions() {
       try {
         const response = await TransactionService.getTransactionRecent();

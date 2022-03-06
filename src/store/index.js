@@ -1,12 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
-import { account } from './account';
+import { card } from './card';
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store({
   modules: {
-      account,
+    card,
   }
 });
