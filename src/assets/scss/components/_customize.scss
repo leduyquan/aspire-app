@@ -140,7 +140,8 @@
     margin-top: 24px;
   }
 }
-.modal-form {
+
+.modal-form.desktop {
   .title {
     font-size: 20px;
     padding: 15px 0;
@@ -165,42 +166,49 @@
       display: inline-block;
       width: 100%;
     }
-  }
-  .off-error {
     .ant-form-item-children-icon,
     .ant-form-explain {
-      display: none;
+      display: block;
     }
   }
-  .ant-modal-content {
-    width: 410px;
-    background: $white-color;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
-    border-radius: 20px;
-    padding: 32px;
-    .ant-modal-body {
-      padding: 0;
-      margin-bottom: 25px;
-      .ant-form {
-        .ant-form-item {
-          margin-bottom: 8px;
-          .ant-form-item-label {
-            padding: 0;
-            line-height: 1.5;
-            > label {
-              font-weight: 400;
-              margin-bottom: 0;
-              color: $blue-color-dark;
+
+  .ant-form-item-children-icon,
+  .ant-form-explain {
+    display: none;
+  }
+  .ant-modal {
+    display: flex;
+    justify-content: center;
+    .ant-modal-content {
+      width: 410px;
+      background: $white-color;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      padding: 32px;
+      .ant-modal-body {
+        padding: 0;
+        margin-bottom: 25px;
+        .ant-form {
+          .ant-form-item {
+            margin-bottom: 8px;
+            .ant-form-item-label {
+              padding: 0;
+              line-height: 1.5;
+              > label {
+                font-weight: 400;
+                margin-bottom: 0;
+                color: $blue-color-dark;
+              }
             }
           }
         }
       }
-    }
-    .ant-modal-footer {
-      padding: 0;
-      border-top: none;
-      button {
-        width: 100%;
+      .ant-modal-footer {
+        padding: 0;
+        border-top: none;
+        button {
+          width: 100%;
+        }
       }
     }
   }
@@ -214,5 +222,124 @@
     color: #fff;
     background-color: $blue-color;
     border-color: $blue-color;
+  }
+}
+
+.modal-form.mobile {
+  .title {
+    font-size: 20px;
+    padding: 15px 0;
+    font-weight: 600;
+  }
+  .ant-form {
+    .ant-form-item {
+      margin-bottom: 8px;
+      .ant-form-item-label {
+        padding: 0;
+        line-height: 1.5;
+        >label {
+          font-size: 1.3rem;
+          font-weight: 400;
+          margin-bottom: 0;
+          color: $blue-color-dark;
+        }
+      }
+      .ant-form-item-control-wrapper {
+        input {
+          height: 28px;
+        }
+      }
+    }
+  }
+  .has-error {
+    .inline-custom {
+      display: inline-block;
+      width: 100%;
+    }
+    .ant-form-item-children-icon,
+    .ant-form-explain {
+      font-size: 1.1rem;
+      display: block;
+    }
+  }
+
+  .ant-form-item-children-icon,
+  .ant-form-explain {
+    display: none;
+  }
+  .ant-modal {
+    display: flex;
+    justify-content: center;
+    top: 20% !important;
+    width: 80% !important;
+    .ant-modal-content {
+      background: $white-color;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      padding: 26px;
+      .ant-modal-body {
+        padding: 0;
+        margin-bottom: 18px;
+        .ant-form {
+          .ant-form-item {
+            margin-bottom: 8px;
+            .ant-form-item-label {
+              padding: 0;
+              line-height: 1.5;
+              > label {
+                font-weight: 400;
+                margin-bottom: 0;
+                color: $blue-color-dark;
+              }
+            }
+          }
+        }
+      }
+      .ant-modal-footer {
+        padding: 0;
+        border-top: none;
+        button {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .btn-register {
+    background: $blue-color;
+    color: $white-color;
+    border: 0;
+    height: 30px;
+  }
+  .ant-btn-primary:hover, .ant-btn-primary:focus {
+    color: #fff;
+    background-color: $blue-color;
+    border-color: $blue-color;
+  }
+}
+
+.delete-card-modal {
+  .ant-modal {
+    top: 30%;
+  }
+}
+.delete-card-modal.mobile {
+  .ant-modal {
+    width: 70% !important;
+    .ant-modal-content {
+      .ant-modal-body {
+        padding: 24px 24px 18px;
+        .ant-modal-confirm-body {
+          .ant-modal-confirm-title {
+            font-size: 1.3rem;
+          }
+        }
+        .ant-modal-confirm-btns {
+          margin-top: 16px;
+          button {
+            height: 26px;
+          }
+        }
+      }
+    }
   }
 }

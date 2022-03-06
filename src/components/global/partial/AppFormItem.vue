@@ -1,5 +1,5 @@
 <template>
-  <ValidationProvider v-slot="slotProps" :vid="vid" :name="nameAttr" :rules="rules">
+  <validation-provider v-slot="slotProps" :vid="vid" :name="nameAttr" :rules="rules">
     <a-form-model-item
       v-bind="$attrs"
       :validate-status="resolveState(slotProps)"
@@ -10,7 +10,7 @@
       <slot name="label" />
       <slot />
     </a-form-model-item>
-  </ValidationProvider>
+  </validation-provider>
 </template>
 
 <script>

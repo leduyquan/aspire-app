@@ -1,9 +1,9 @@
 <template>
-  <AppFormItem v-bind="{...$props, ...$attrs}">
+  <app-form-item v-bind="{...$props, ...$attrs}">
     <a-input v-model="model" v-bind="$attrs" :placeholder="placeholderItem">
       <slot v-for="slot in Object.keys($slots)" :slot="slot" :name="slot" />
     </a-input>
-  </AppFormItem>
+  </app-form-item>
 </template>
 
 <script>

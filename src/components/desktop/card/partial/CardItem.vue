@@ -3,10 +3,10 @@
     <img class="card-item__logo svg-render" :src="iconPath(`logos/dashboard.svg`)" />
     <div class="card-item__name">{{ fullName }}</div>
     <div class="card-item__number">
-      <CardItemNumber :number="firstCardNumber" :is-show="isShowNumber"/>
-      <CardItemNumber :number="secondCardNumber" :is-show="isShowNumber"/>
-      <CardItemNumber :number="thirdCardNumber" :is-show="isShowNumber"/>
-      <CardItemNumber :number="lastCardNumber" :is-show="true"/>
+      <card-item-number :number="firstCardNumber" :is-show="isShowNumber"/>
+      <card-item-number :number="secondCardNumber" :is-show="isShowNumber"/>
+      <card-item-number :number="thirdCardNumber" :is-show="isShowNumber"/>
+      <card-item-number :number="lastCardNumber" :is-show="true"/>
     </div>
     <div class="card-item__date-cvv">
       <div class="card-date">

@@ -2,7 +2,7 @@
   <div class="footer">
     <ul class="footer__tabs">
       <li v-for="item in tabs" :key="item.name">
-        <router-link class="footer-item" :to="'/' + item.name" :title="item.description">
+        <router-link class="footer-item" :to="'/' + item.path" :title="item.description">
           <img class="footer-item__logo svg-render" :src="iconPath(`tabs/${item.icon}.svg`)" />
           <div class="footer-item__title">
             {{ item.description }}
@@ -19,33 +19,38 @@ export default {
     return {
       tabs: [
         {
-          name: "home",
-          icon: "home",
-          description: this.$t("tabs.home"),
+          name: 'home',
+          path: 'home/mobile',
+          icon: 'home',
+          description: this.$t('tabs.home'),
           active: false,
         },
         {
-          name: "cards",
-          icon: "card",
-          description: this.$t("tabs.cards"),
+          name: 'cards',
+          path: 'cards/mobile',
+          icon: 'card',
+          description: this.$t('tabs.cards'),
           active: false,
         },
         {
-          name: "payments",
-          icon: "payment",
-          description: this.$t("tabs.payments"),
+          name: 'payments',
+          path: 'payments/mobile',
+          icon: 'payment',
+          description: this.$t('tabs.payments'),
           active: false,
         },
         {
-          name: "credit",
-          icon: "credit",
-          description: this.$t("tabs.credit"),
+          name: 'credit',
+          path: 'credit/mobile',
+          icon: 'credit',
+          description: this.$t('tabs.credit'),
           active: false,
         },
         {
-          name: "profiles",
-          icon: "setting",
-          description: this.$t("tabs.profiles"),
+          name: 'profiles',
+          path: 'profiles/mobile',
+          icon: 'setting',
+          description: this.$t('tabs.profiles'),
           active: false,
         },
       ],

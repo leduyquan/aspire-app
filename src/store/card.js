@@ -16,6 +16,12 @@ const mutations = {
     getCardAllFailure(state) {
         state.status = 'error';
     },
+    onFreezeCardRequest() {
+        // state.cards =
+    },
+    onFreezeCardSuccess(state, data) {
+        state.cards = data
+    }
 };
 
 const actions = {
@@ -28,13 +34,31 @@ const actions = {
             commit('getCardAllFailure', error);
         }
     },
+    async onFreezeCardd({ commit }, data) {
+        try {
+            commit('onFreezeCardRequest');
+            if (data) {
+                console.log('haha')
+                const payload = { ...data };
+                payload.status = !data.status;
+                const response = await CardService.updateCard(payload.id, payload);
+                // if (response.statusText === "OK") {
+                //     cards[index]['status'] = payload.status;
+                //   this.cardData = a
+                //   console.log('cardData', this.cardData)
+                //   // this.getCardAll();
+                // }
+                commit('onFreezeCardSuccess', response.data);
+              }
+        } catch (error) {
+            // commit('getCardAllFailure', error);
+        }
+    },
+
 };
 
 const getters = {
-    cards: state => state.cards.map(item => ({
-        ...item,
-        isShowNumber: false
-    })),
+    cards: state => state.cards,
     status: state => state.status,
 };
 

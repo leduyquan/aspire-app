@@ -30,33 +30,33 @@ export default {
     return {
       tabs: [
         {
-          name: "home",
-          icon: "home",
-          description: this.$t("tabs.home"),
+          name: 'home',
+          icon: 'home',
+          description: this.$t('tabs.home'),
           active: false,
         },
         {
-          name: "cards",
-          icon: "card",
-          description: this.$t("tabs.cards"),
+          name: 'cards',
+          icon: 'card',
+          description: this.$t('tabs.cards'),
           active: false,
         },
         {
-          name: "payments",
-          icon: "payment",
-          description: this.$t("tabs.payments"),
+          name: 'payments',
+          icon: 'payment',
+          description: this.$t('tabs.payments'),
           active: false,
         },
         {
-          name: "credit",
-          icon: "credit",
-          description: this.$t("tabs.credit"),
+          name: 'credit',
+          icon: 'credit',
+          description: this.$t('tabs.credit'),
           active: false,
         },
         {
-          name: "settings",
-          icon: "setting",
-          description: this.$t("tabs.settings"),
+          name: 'settings',
+          icon: 'setting',
+          description: this.$t('tabs.settings'),
           active: false,
         },
       ],
@@ -71,13 +71,6 @@ export default {
       return this.isCollapse ? 90 : 340;
     }
   },
-  watch: {
-    isCollapse() {
-      // const cide = document.querySelectorAll('.sidebar-item__title');
-      // console.log('cide', cide)
-      // cide.classList.add('sidebar-item__title--hidden')
-    },
-  },
   mounted() {
     window.addEventListener('resize', this.resizeHandle);
     this.resizeHandle();
@@ -85,7 +78,6 @@ export default {
   methods: {
     resizeHandle() {
       this.screenWidth = window.innerWidth;
-      console.log('this.screenWidth', this.screenWidth)
     },
   },
 };

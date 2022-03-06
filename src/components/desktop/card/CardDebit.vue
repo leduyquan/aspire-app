@@ -5,59 +5,52 @@
         <div class="debit-card__info">
           <div class="card-list">
             <vue-slick-carousel ref="carousel" :key="carouselKey" @afterChange="currentCarouselIndex = $event" v-if="cards.length > 0" class="card-carousel" v-bind="carouselSettings" >
-              <div v-for="(card) in cardData" :key="card.id">
+              <div v-for="(card) in cards" :key="card.id">
                 <div class="show-card-wrapper">
                   <div class="show-card" @click="onShowNumberCard(card.id)">
                     <img class="show-card__logo" :src="iconPath(`icons/global/show-eye.svg`)" />
                     <span class="show-card__label">{{ $t('card.show_card_number') }}</span>
                   </div>
                 </div>
-                <CardItem
+                <card-item
                   :first-name="card.firstName"
                   :last-name="card.lastName"
                   :dateTime="card.expiredDate"
                   :card-number="card.cardNumber"
                   :status="card.status"
                   :is-show-number="card.isShowNumber"
-                ></CardItem>
+                ></card-item>
               </div>
               </vue-slick-carousel>
           </div>
           <div class="card-action-wrapper">
-            <CardAction icon="freeze-card" :label="freezeLabel" @click="onFreezeCard"></CardAction>
-            <CardAction icon="spend-limit" :label="$t('card.set_spend_limit')"></CardAction>
-            <CardAction icon="g-pay" :label="$t('card.add_to_gpay')"></CardAction>
-            <CardAction icon="replace-card" :label="$t('card.replace_card')"></CardAction>
-            <a-popconfirm
-              :title="$t('card.sure_delete_card')"
-              :ok-text="$t('app.yes')"
-              :cancel-text="$t('app.no')"
-              @confirm="onDeleteCard"
-            >
-              <CardAction icon="deactivate-card" :label="$t('card.cancel_card')"></CardAction>
-            </a-popconfirm>
+            <card-action icon="freeze-card" :label="freezeLabel" @click="onFreezeCard"></card-action>
+            <card-action icon="spend-limit" :label="$t('card.set_spend_limit')"></card-action>
+            <card-action icon="g-pay" :label="$t('card.add_to_gpay')"></card-action>
+            <card-action icon="replace-card" :label="$t('card.replace_card')"></card-action>
+            <card-action icon="deactivate-card" :label="$t('card.cancel_card')" @click="showDeleteCardConfirm"></card-action>
           </div>
         </div>
       </a-col>
       <a-col :lg="24" :xl="12">
         <div class="debit-card__history">
           <div class="card-collapse card-detail">
-            <CardCollapse
+            <card-collapse
               icon="card-detail"
               :header-label="$t('card.card_details')"
             >
-              <CardDetail></CardDetail>
-            </CardCollapse>
+              <card-detail></card-detail>
+            </card-collapse>
           </div>
           <div class="card-collapse card-transaction">
-            <CardCollapse
+            <card-collapse
               icon="recent-transaction"
               :header-label="$t('card.recent_transactions')"
               :action-label="$t('card.view_all_card')"
               :is-open="true"
             >
               <div class="card-collapse-content">
-                <CardTransaction
+                <card-transaction
                   v-for="transaction in recentTransactions"
                   :key="transaction.id"
                   :name="transaction.name"
@@ -67,7 +60,7 @@
                   :balance="transaction.balance"
                 />
               </div>
-            </CardCollapse>
+            </card-collapse>
           </div>
         </div>
       </a-col>
@@ -81,7 +74,6 @@ import CardAction from '@/components/desktop/card/partial/CardAction.vue';
 import CardCollapse from '@/components/desktop/card/partial/CardCollapse.vue';
 import CardTransaction from '@/components/desktop/card/partial/CardTransaction.vue';
 import CardDetail from '@/components/desktop/card/partial/CardDetail.vue';
-import CardService from '@/services/card.service';
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
@@ -108,7 +100,6 @@ export default {
   data() {
     return {
       currentCarouselIndex: 0,
-      isShowNumber: false,
       carouselSettings: {
         arrows: false,
         dots: true,
@@ -123,14 +114,6 @@ export default {
     };
   },
   computed: {
-    cardData: {
-      get() {
-        return this.cards;
-      },
-      set(data) {
-        return data;
-      }
-    },
     cardSelected() {
       return this.cards[this.currentCarouselIndex];
     },
@@ -147,40 +130,29 @@ export default {
     }
   },
   methods: {
-    async onFreezeCard() {
-      try {
-        if (this.cardSelected) {
-          const payload = { ...this.cardSelected };
-          payload.status = !this.cardSelected.status;
-          const response = await CardService.updateCard(payload.id, payload);
-          if (response.statusText === "OK") {
-            this.cards[this.currentCarouselIndex]['status'] = payload.status;
-          }
-        }
-      } catch (error) {
-        this.notification('success', this.$t('messages.update_card_failed'));
-      }
+    onFreezeCard() {
+      this.$emit('onFreezeCard', this.cardSelected, this.currentCarouselIndex);
     },
-    async onDeleteCard() {
-      try {
-        if (this.cardSelected) {
-          const response = await CardService.deleteCard(this.cardSelected.id);
-          if (response.statusText === "OK") {
-            this.cards.splice(this.currentCarouselIndex, 1);
-            this.notification('success', this.$t('messages.delete_card_success'));
-          }
-        }
-      } catch (error) {
-        this.notification('success', this.$t('messages.delete_card_failed'));
-      }
+    onDeleteCard() {
+      this.$emit('onDeleteCard', this.cardSelected, this.currentCarouselIndex);
     },
     onShowNumberCard(cardId) {
-      this.cardData = this.cardData.map(item => {
-        if (item.id === cardId) {
-          item.isShowNumber = !item.isShowNumber;
-        }
-        return item;
-      })
+      this.$emit('onShowNumberCard', cardId);
+    },
+    showDeleteCardConfirm() {
+      const self = this;
+      this.$confirm({
+        class: 'delete-card-modal',
+        title: this.$t('card.sure_delete_card'),
+        okText: this.$t('app.yes'),
+        okType: 'danger',
+        cancelText: this.$t('app.no'),
+        onOk() {
+          self.onDeleteCard();
+        },
+        onCancel() {
+        },
+      });
     },
     onSlideClick() {
     },

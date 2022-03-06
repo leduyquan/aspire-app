@@ -8,13 +8,13 @@
             </div>
         </a-layout-content>
         <a-layout-footer>
-          <TheFooter />
+          <the-footer></the-footer>
         </a-layout-footer>
       </a-layout>
     </div>
     <div v-else class="desktop">
       <a-layout>
-        <TheSidebar />
+        <the-sidebar></the-sidebar>
         <a-layout>
           <a-layout-content>
             <div class="content-wrapper">
@@ -38,3 +38,4 @@ export default {
   }
 };
 </script>
+    TheFooter

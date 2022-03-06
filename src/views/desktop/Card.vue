@@ -15,19 +15,24 @@
     <div class="card-page__content">
       <a-tabs default-active-key="debit-cards">
         <a-tab-pane key="debit-cards" :tab="$t('card.my_debit_cards')">
-          <CardDebit :cards="cards" :recent-transactions="recentTransactions"></CardDebit>
+          <card-debit
+            :cards="cards"
+            :recent-transactions="recentTransactions"
+            @onFreezeCard="onFreezeCard"
+            @onDeleteCard="onDeleteCard"
+            @onShowNumberCard="onShowNumberCard">
+          </card-debit>
         </a-tab-pane>
         <a-tab-pane key="company-cards" :tab="$t('card.all_company_cards')">
-          <CardCompany></CardCompany>
+          <card-company></card-company>
         </a-tab-pane>
       </a-tabs>
     </div>
     <a-modal
       :visible="addCardModal.visible"
-      wrapClassName="modal-form"
-      @cancel="handleCancel('invoice')"
-    >
-      <ValidationObserver ref="observer_card">
+      wrapClassName="modal-form desktop"
+      @cancel="handleCancel('invoice')">
+      <validation-observer ref="observer_card">
         <a-form :form="form">
           <app-input
             :vid="$t('card.first_name')"
@@ -42,7 +47,7 @@
             :label="$t('card.last_name')"
           ></app-input>
         </a-form>
-      </ValidationObserver>
+      </validation-observer>
       <template slot="footer">
         <a-button key="submit" type="primary" class="btn-register btn-opacity" :loading="addCardModal.isLoading" @click="onSaveCard">
           {{$t('app.submit')}}
@@ -57,7 +62,6 @@ import CardCompany from '@/components/desktop/card/CardCompany.vue';
 import CardService from '../../services/card.service'
 import TransactionService from '../../services/transaction.service'
 import moment from 'moment'
-import { mapState, mapActions } from 'vuex'
 import { ValidationObserver } from 'vee-validate';
 
 export default {
@@ -68,6 +72,7 @@ export default {
   },
   data() {
     return {
+      cards: [],
       recentTransactions: [],
       balance: 0,
       form: {
@@ -81,18 +86,23 @@ export default {
     };
   },
   computed: {
-    ...mapState('card', ['cards']),
     balanceFormat() {
       return this._numberWithCommas(this.balance)
     }
   },
   mounted() {
     this.getCardAll();
-    this.getRecentTransactions();
+    this.getTransactionRecent();
   },
   methods: {
-    ...mapActions('card', ['getCardAll']),
-    async getRecentTransactions() {
+    async getCardAll() {
+      const response = await CardService.getCardAll();
+      this.cards = response.data.map(item => ({
+        ...item,
+        isShowNumber: false
+      }));
+    },
+    async getTransactionRecent() {
       try {
         const response = await TransactionService.getTransactionRecent();
         const { data } = response;
@@ -117,9 +127,10 @@ export default {
             status: true
           }
           const response = await CardService.createCard(payload);
-          if (response.statusText === 'OK')
-          this.notification('success', this.$t('messages.create_card_success'))
-          this.getCards();
+          if (response.statusText === 'Created') {
+            this.notification('success', this.$t('messages.create_card_success'))
+            this.getCardAll();
+          }
         } catch(err) {
           this.notification('error', this.$t('messages.create_card_failed'))
         } finally {
@@ -127,6 +138,37 @@ export default {
           this.handleCancel();
         }
       }
+    },
+    async onFreezeCard(data, index) {
+      try {
+        if (data) {
+          const payload = { ...data };
+          payload.status = !data.status;
+          const response = await CardService.updateCard(payload.id, payload);
+          if (response.statusText === "OK") {
+            this.cards[index]['status'] = payload.status;
+          }
+        }
+      } catch (error) {
+        this.notification('success', this.$t('messages.update_card_failed'));
+      }
+    },
+    async onDeleteCard(data, index){
+      try {
+        if (data) {
+          const response = await CardService.deleteCard(data.id, index);
+          if (response.statusText === "OK") {
+            this.notification('success', this.$t('messages.delete_card_success'));
+            this.cards.splice(index, 1);
+          }
+        }
+      } catch (error) {
+        this.notification('success', this.$t('messages.delete_card_failed'));
+      }
+    },
+    onShowNumberCard(id) {
+      const card = this.cards.find(item => item.id === id);
+      card.isShowNumber = !card.isShowNumber;
     },
     openAddCardModal() {
       this.addCardModal.visible = true
@@ -152,3 +194,6 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+@import "@/assets/scss/components/desktop/card.scss";
+</style>

@@ -1,3 +1,4 @@
+@import '../../base/variables';
 .mobile {
   .card-page {
     background-color: $blue-color-dark;
@@ -117,9 +118,9 @@
           }
         }
         .card-carousel {
-          padding-right: 16px;
+          margin-left: 24px;
           .slick-slide {
-            padding: 0 12px;
+            padding-right: 16px;
             padding-top: 9px;
           }
           .slick-slide.slick-current {
@@ -139,7 +140,8 @@
             }
           }
           .slick-list {
-              margin: 0 -12px;
+              // margin: 0 -12px;
+              margin-left: -16px;
           }
           .custom-dot-class {
             bottom: -24px;
@@ -358,7 +360,6 @@
             &__balance--status {
               color: $green-color;
             }
-  
           }
           .transaction-date {
             font-size: 1.3rem;
@@ -381,10 +382,10 @@
             }
           }
           &__label {
+            cursor: pointer;
             font-size: 1.2rem;
             font-weight: 600;
             color: $blue-color;
-            
           }
         }
       }
