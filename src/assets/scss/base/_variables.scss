@@ -3,10 +3,6 @@ $font-size-base: 62.5%;
 $bg-color-base: #0c365a;
 $bg-color-widget: #EDF3FF;
 
-$text-color-base: #333;
-
-$green-weak-color: #EDFFF5;
-
 $blue-color: #325BAF;
 $blue-color-dark: #0C365A;
 $white-color: #FFFFFF;
@@ -22,3 +18,11 @@ $to-md-screen:"only screen and (max-width : 768px)";
 $to-lg-screen:"only screen and (max-width : 992px)";
 $to-xl-screen:"only screen and (max-width : 1200px)";
 $to-xxl-screen:"only screen and (max-width : 1360px)";
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}

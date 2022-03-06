@@ -1,6 +1,8 @@
 <template>
   <div class="card-item" :class="{'card-item--inactive': !status}">
-    <img class="card-item__logo svg-render" :src="iconPath(`logos/dashboard.svg`)" />
+    <div class="card-item__logo-wrapper">
+      <img class="card-item__logo svg-render" :src="iconPath(`logos/dashboard.svg`)" />
+    </div>
     <div class="card-item__name">{{ fullName }}</div>
     <div class="card-item__number">
       <card-item-number :number="firstCardNumber" :is-show="isShowNumber"/>

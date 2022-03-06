@@ -156,7 +156,8 @@
         gap: 28px;
         margin-bottom: 15px;
         .card-item-dot {
-          display: flex;
+          // display: flex;
+          @include flexbox();
           gap: 7px;
           .dot {
             border-radius: 50%;
