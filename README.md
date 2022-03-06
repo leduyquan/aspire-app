@@ -1,24 +1,9 @@
 # aspire-app
 
-## Project setup
-```
+How to start this project?
+
+Step 1:
 yarn install
-```
 
-### Compiles and hot-reloads for development
-```
+Step 2:
 yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
