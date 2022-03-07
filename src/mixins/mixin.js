@@ -17,7 +17,7 @@ Vue.mixin({
         },
         formatDateTime(dateTime, format) {
             if (!dateTime) return ''
-            return this.localTimeConversion(dateTime,format,userTimezone)
+            return this.localTimeConversion(moment(dateTime, format),format,userTimezone)
         }
     },
 });
