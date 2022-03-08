@@ -23,13 +23,5 @@ export default {
     if (this.value) {
       this.model = this.value
     }
-  },
-  mounted() {
-    this.listeners = Object.keys(this.$listeners)
-      .filter(key => key !== 'input')
-      .reduce((obj, key) => {
-        obj[key] = this.$listeners[key]
-        return obj
-      }, {})
   }
 }
