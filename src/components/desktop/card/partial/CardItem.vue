@@ -101,7 +101,9 @@ export default {
           if(!svg.getAttribute('viewBox') && svg.getAttribute('height') && svg.getAttribute('width')) {
               svg.setAttribute('viewBox', '0 0 ' + svg.getAttribute('height') + ' ' + svg.getAttribute('width'))
           }
-          img.parentNode.replaceChild(svg, img);
+          if (img.parentNode) {
+            img.parentNode.replaceChild(svg, img);
+          }
       });
     });
   }
