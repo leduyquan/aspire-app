@@ -1,21 +1,18 @@
 <template>
-  <app-form-item v-bind="{...$props, ...$attrs}">
-    <a-input v-model="model" v-bind="$attrs" :placeholder="placeholderItem"> </a-input>
+  <app-form-item v-bind="$attrs">
+    <a-input v-model="$attrs.value" :placeholder="placeholderItem" @input="$emit('input', $event.target.value)"></a-input>
   </app-form-item>
 </template>
 
 <script>
 import AppFormItem from '@/components/global/partial/AppFormItem.vue'
-import FormMixin from '@/mixins/form'
 
 export default {
   name: 'AppInput',
+  // inheritAttrs: false,
   components: {
     AppFormItem
   },
-  mixins: [
-    FormMixin
-  ],
   computed: {
     placeholderItem() {
       return this.$attrs.placeholder || this.$attrs.label;

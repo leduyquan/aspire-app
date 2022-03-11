@@ -35,15 +35,15 @@
       <validation-observer ref="observer_card">
         <a-form :form="form">
           <app-input
-            :vid="$t('card.first_name')"
             v-model="form.firstName"
             rules="required"
+            :vid="$t('card.first_name')"
             :label="$t('card.first_name')"
           ></app-input>
           <app-input
-            :vid="$t('card.last_name')"
             v-model="form.lastName"
             rules="required"
+            :vid="$t('card.last_name')"
             :label="$t('card.last_name')"
           ></app-input>
         </a-form>
@@ -95,6 +95,9 @@ export default {
     this.getTransactionRecent();
   },
   methods: {
+    haha(e) {
+      this.form.firstName = e.target.value
+    },
     async getCardAll() {
       const response = await CardService.getCardAll();
       this.cards = response.data.map(item => ({
